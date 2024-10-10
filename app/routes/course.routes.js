@@ -12,13 +12,13 @@ module.exports = (app) => {
   router.get("/department/:department", course.findAll);
 
   // Retrieve a single Course with id
-  router.get("/:id", course.findOne);
+  router.get("/:idcourse", course.findOne);
 
   // Update a Course with id
-  router.put("/:id", course.update);
+  router.put("/:idcourse", course.update);
 
   // Delete a Course with id
-  router.delete("/:id", course.delete);
+  router.delete("/:idcourse", course.delete);
 
   // Delete all course
   router.delete("/", course.deleteAll);

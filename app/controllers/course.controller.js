@@ -51,14 +51,14 @@ exports.findAll = (req, res) => {
 
 // Find a single Course with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
-  Course.findByPk(id)
+  const idcourse = req.params.idcourse;
+  Course.findByPk(idcourse)
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Course with id=${id}.`,
+          message: `Cannot find Course with id=${idcourse}.`,
         });
       }
     })
@@ -69,11 +69,11 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a Course by the courseNumber in the request
+// Update a Course by the idcourse in the request
 exports.update = (req, res) => {
-  const courseNumber = req.params.courseNumber;
+  const idcourseString = req.params.idcourse;
   Course.update(req.body, {
-    where: { courseNumber: courseNumber },
+    where: { idcourse: idcourseString },
   })
     .then((num) => {
       if (num == 1) {
@@ -82,21 +82,21 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Course with number=${courseNumber}. Maybe Course was not found or req.body is empty!`,
+          message: `Cannot update Course with id=${idcourse}. Maybe Course was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Error updating Course with number=" + courseNumber,
+        message: err.message || "Error updating Course with id=" + idcourse,
       });
     });
 };
 // Delete a Course with the specified courseNumber in the request
 exports.delete = (req, res) => {
-  const courseNumber = req.params.courseNumber;
+  const idcourseString = req.params.idcourse;
   Course.destroy({
-    where: { courseNumber: courseNumber },
+    where: { idcourse: idcourseString },
   })
     .then((num) => {
       if (num == 1) {
