@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     level: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.INTEGER,
     },
     hours: {
       type: Sequelize.INTEGER,
